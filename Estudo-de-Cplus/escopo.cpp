@@ -22,3 +22,10 @@ int main(){ //main é uma função que marca o ponto de iníciode execução do 
     cout << "Existem " << pera << "peras de qualidade " << qualidade<< "pesando " << peso << "quilos." << endl;
     cout << "O preco por quilo eh R$" << PRECO << ", o total eh R$" << peso * PRECO << endl;
 }
+
+
+// Rodar no terminal
+/*
+ g++ -o programa Estudo-de-Cplus/chinelos.cpp
+ ./programa
+*/
