@@ -9,15 +9,12 @@ int soma (int num[], int soma_array){
 
     for (int i = 0 ; i < 9 ; i++){
         menor = num[i];
-
-        for (int k = 1 ; k < 8 ; k++){
+        for (int k = i ; k < 8 ; k++){
             menor += num[k];
         }
-
         if (menor > maior){
             maior = menor;
         }
-
         if (resultado < maior)
             resultado = maior;
     }
