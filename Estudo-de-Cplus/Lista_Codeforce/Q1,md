@@ -1,0 +1,24 @@
+int dividindo_str(const string& m) {
+    istringstream iss(m);
+    int qtd;
+    iss >> qtd;  // coloca o primeiro elemento da string como o número de medições
+
+    int medicoes[qtd];  // Vetor de medições
+    int i = 0;
+    int value;
+
+    // Preenche o vetor com as medições
+    while (iss >> value && i < qtd) {
+        medicoes[i] = value;
+        i++;
+    }
+
+    // Exibe as medições para verificar
+    for (int k = 0; k < qtd; k++) {
+        cout << medicoes[k] << " ";
+    }
+    cout << endl;
+
+    // Chama a função para calcular o esforço
+    return tamanho_do_esforco(medicoes, qtd);
+}

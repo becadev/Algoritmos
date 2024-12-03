@@ -1,22 +1,10 @@
 # include <iostream>
 # include <algorithm>
 # include <iomanip>
-# include <set>
 using namespace std;
-// Ordenar 
-
-int fatorial(int nk){
-    int fat = 1;
-    for (int i = 2 ; i <= nk ; i++){
-        fat *= i;
-    }
-    return fat;
-}
 
 double maior_media(double a[], int n,int k){
-    int n_fat = fatorial(n);
-    int k_fat = fatorial(k);
-    int qtd = (n_fat) / ((k_fat)* fatorial(n-k));
+    int qtd = (n * (n - 1) * (n - 2)) / 6;
     double resposta;
     // alocação dinâmica 
     double* medias = new double[qtd];
@@ -32,40 +20,12 @@ double maior_media(double a[], int n,int k){
             }
         }
     }
-    // ordena e elimina elementos repetidos e colocar dentro de um set
-    std::sort(medias,  medias+qtd);
-    set<double> lista(medias, medias + qtd);
-    delete[] medias; // libera memoria alocada;
-
-    // verifica o tamanho do set após retirar os repetidos
-    int tamanho = lista.size();
-
-    cont = 0;
-    double* array_medias = new double[tamanho];
-
-    // colocando os elementos do set dentro da array
-    for (auto elem :lista){
-        
-        array_medias[cont] = elem; 
-        cont++;
-    }
-
-    int i = tamanho;
-    cont = 0;
-
-    while (i > 0){
-        i--;
-        if (array_medias[i] > array_medias[i-1]){
-            cont ++;
-        }
-        if (cont == k){
-            resposta = array_medias[i];
-            break;
-        }
-    }
+    // ordena
+    std::sort(medias,  medias + cont);
+    resposta = medias[cont-k];
 
     // libera memoria alocada;
-    delete[] array_medias;
+    delete[] medias;
 
     return resposta;
 }
@@ -84,3 +44,12 @@ int main(){
     } 
     return 0;
 }
+
+
+/*
+TESTE QUE ESTpA GERANDO SAIDA ERRADA:
+4 4
+1 2 3 5
+saida errada: 2.0
+saida certa: 3.0
+*/
