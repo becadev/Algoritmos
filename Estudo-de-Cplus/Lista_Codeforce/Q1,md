@@ -1,24 +1,55 @@
-int dividindo_str(const string& m) {
-    istringstream iss(m);
-    int qtd;
-    iss >> qtd;  // coloca o primeiro elemento da string como o número de medições
+# include <iostream>
+# include <algorithm>
+using namespace std;
 
-    int medicoes[qtd];  // Vetor de medições
+int main(){
+    int n, cont = 0;
+    cin >> n;
+    int fita[n];
+    int fitas_coloridas[n];
+    int fitas_coloridas2[n];
     int i = 0;
-    int value;
 
-    // Preenche o vetor com as medições
-    while (iss >> value && i < qtd) {
-        medicoes[i] = value;
-        i++;
+    for (i = 0 ; i < n ; i++){
+        cin >> fita[i];
     }
 
-    // Exibe as medições para verificar
-    for (int k = 0; k < qtd; k++) {
-        cout << medicoes[k] << " ";
+    for (int i = 0 ; i <= n ; i++){
+
+        if (fita[i] < 0){
+            // For por incremento
+            for (int k = i+1 ; k <= n-1 ; k++){
+                    cont+= 1;
+                    cout << k << " ";
+                    if (fita[k] == 0){
+                        fitas_coloridas2[i] = cont;
+                        break;
+                    }
+                   
+                }
+
+            // For por decremento
+            // for (int j = n-1 ; j > 0 ; j --){
+            //         cont+= 1;
+            //         if (fita[i] == 0){
+            //             fitas_coloridas[i] = cont;
+            //             break;
+            //         }
+            //     }
+            }else{
+                fitas_coloridas[i] = 0;
+                fitas_coloridas2[i] = 0;
+            }
+        cont = 0;
     }
+    // printando for de decremento
+    // for (int i = 0 ; i < n ; i++){
+    //     cout << fitas_coloridas[i] <<  " ";
+    // }
     cout << endl;
-
-    // Chama a função para calcular o esforço
-    return tamanho_do_esforco(medicoes, qtd);
+    // Printando for de incremento
+    for (int i = 0 ; i < n ; i++){
+        cout << fitas_coloridas2[i] <<  " ";
+    }
+    return 0;
 }
