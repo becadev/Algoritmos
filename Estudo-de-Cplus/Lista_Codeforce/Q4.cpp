@@ -1,54 +1,58 @@
+// Fita Colorida - F1PJ - OBI 2015
+// Complexidade : O(n)
 # include <iostream>
 # include <algorithm>
 using namespace std;
 
+
+// valores altos para manter a precisão do código em casos de testes com qtd altas
+/* Representa uma "distância infinita", usada para inicializar os vetores de distância (esq e dir). 
+Esse valor é muito maior que qualquer distância possível.*/
+# define inf  999999999
+/* Define o tamanho máximo da fita (vetor fita) 
+como 10.100, garantindo que o programa suporte até esse número de posições.*/
+
+# define max  10100
+
 int main(){
-    int n, cont = 0, cont2 = 0;
+    int n;
     cin >> n;
-    int fita[n];
-    int fitas_coloridas[n];
-    int fitas_coloridas2[n];
-    int i = 0;
-    int n2 = n;
-    for (i = 0 ; i < n ; i++){
-        cin >> fita[i];
-    }
-    for (i = 0 ; i < n ; i++){
-        if (fita[i] != 0){
-            n2--;
-            for (int k = i+1 ; k < n+1 ; k++){
-                    cont+= 1;
-                    if (fita[k] == 0){
-                        break;
-                    }
-                }
-            // For por incremento
-            for (int j = n2 ; j >= 0 ; j--){
-                    cont2+= 1;
-                    if (fita[j] == 0){                    
-                        break;
-                    }
+    int fita[max];
+    int esq[max];
+    int dir[max];
+
+            // recebendo fita
+            for (int i = 1 ; i <=n ; i++)cin >> fita[i];
+
+            for(int i = 0 ; i <= n + 1 ; i++){
+                dir[i] = esq[i] = inf;
+            }   
+
+            // olha a distancia do zero para a esquerda
+            for (int i = 1 ; i <= n ; i++){
+                // se o tom for zero, será zero
+                if(fita[i] == 0)
+                    esq[i] = 0;
+                // senao, é a distancia do tom a esquerda + 1
+                else esq[i] = esq[i-1] + 1;
+            }
+
+
+            // mesma coisa só que para a direita do zero
+            for (int i = n; i > 0; i--){
+                // se o tom for zero, será zero
+                if(fita[i] == 0)
+                    dir[i] = 0;
+                // senao, é a distancia do tom a direita + 1
+                else dir[i] = dir[i+1] + 1;
+            }
+
+			// printando de acordo com a distancia min.
+            for (int i = 1 ; i <= n ; i++){
+                cout << min(9, min(esq[i], dir[i]));
+                if (i < n){
+                    cout << " ";
                 }
             }
-        // }
-        fitas_coloridas2[i] = cont;
-        fitas_coloridas[i]  = cont2;
-        cont = 0;
-        cont2 = 0;
-    }
-
-    for (i = 0 ; i < n ; i ++ ){
-        if (fitas_coloridas[i] > fitas_coloridas2[i]) fitas_coloridas[i] = fitas_coloridas2[i];
-    }
-
-    
-    for (int i = 0 ; i < n ; i++){
-        cout << fitas_coloridas[i] <<  " ";
-    }
-    cout << endl;
-    return 0;
+            cout << endl;
 }
-
-//*  1 0 1 7 6 5 4 3 2 1 0 1 1 
-//   1 0 1 3 3 3 3 3 2 1 0 1 1
-//  1 0 1 2 3 4 4 3 2 1 0 1 2

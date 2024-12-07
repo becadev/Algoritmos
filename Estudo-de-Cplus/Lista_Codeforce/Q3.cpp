@@ -1,3 +1,5 @@
+// Trilhas - OBI - Olimpíada Brasileira de Informática 2005 - Fase 1
+// Complexidade : 
 # include <iostream>
 # include <iomanip>
 # include <algorithm>

@@ -1,3 +1,6 @@
+// Média - V Maratona Norte Mineira de Programação
+// Compelixidade: O(n³)
+ 
 # include <iostream>
 # include <algorithm>
 # include <iomanip>
