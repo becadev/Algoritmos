@@ -1,0 +1,10 @@
+gitpod /workspace/Algoritmos (main) $ g++ -o programa Algoritmo/Q1.cpp
+gitpod /workspace/Algoritmos (main) $ ls
+Algoritmo  Estudo-de-Cplus  Livros.md  mmc.cpp  programa  README.md
+gitpod /workspace/Algoritmos (main) $ cd Algoritmo/
+gitpod /workspace/Algoritmos/Algoritmo (main) $ ls
+Q1.cpp  t1.txt
+gitpod /workspace/Algoritmos/Algoritmo (main) $ g++ -o Q1 Q1.cpp
+gitpod /workspace/Algoritmos/Algoritmo (main) $ ls
+Q1  Q1.cpp  t1.txt
+gitpod /workspace/Algoritmos/Algoritmo (main) $ ./Q1 < t1.txt 

@@ -11,34 +11,37 @@ int main(){
     cin >> n;
     int fita[n];
     int fitas_coloridas[n];
-    int fitas_coloridas2[n];
     int i = 0;
     int n2 = n;
-        for (i = 0 ; i < n ; i++){
-            cin >> fita[i];
-        }
-        for (i = 0 ; i < n ; i++){
-            fitas_coloridas[i] = 100;
-        }
-        for (i = 0 ; i < n ; i++){
-            if(fita[i] < 0){
-                cont2++;
-            }
-        }
 
+    // adicionar os valores a fita
+    for (i = 0 ; i < n ; i++){
+        cin >> fita[i];
+    }
+    // colocar um valor alto como "comparador"
+    for (i = 0 ; i < n ; i++){
+        fitas_coloridas[i] = 100;
+    }
+    // Se a fita não tiver um quadrado zero então o contador será igual ao tamanho da fita
+    for (i = 0 ; i < n ; i++){
+        if(fita[i] < 0){
+            cont2++;
+        }
+    }
 
-        if (cont2 < n){
-        for (i = 0 ; i <= n ; i++){
+    if (cont2 < n){
+        for (i = 0 ; i < n ; i++){
             if (fita[i] == 0){
+                
                 // Percorrer por decremento 
                 for(int k = i; k > 0; k--){
-                    if (fita[k-1] != 0){
+                    if (fita[k-1] != 0){ // verificar se o valor anterior não é igual a 0
                         cont += 1;
-                        if (fitas_coloridas[k-1] > cont){
+                        if (fitas_coloridas[k-1] == 100){ // verifica 
                             if(cont <= 9){
                                 fitas_coloridas[k-1] = cont;
                             }else{
-                                 fitas_coloridas[k-1] = 9;
+                                fitas_coloridas[k-1] = 9;
                             }
                         }
                     }
@@ -47,18 +50,18 @@ int main(){
                     }
                 }
                 cont = 0;
+                
                 // Percorrer por incremento
-                for(int k = i; k < n+1; k++){
+                for(int k = i; k < n; k++){
                     if (fita[k+1]!=0){
                         cont+=1;
                         // fitas_coloridas[k+1] = cont;
-                        if (fitas_coloridas[k+1] > cont){
+                        if (fitas_coloridas[k+1] == 100){
                             if (cont <= 9){
                                 fitas_coloridas[k+1] = cont;
                             }else{
                                 fitas_coloridas[k+1] = 9;
-                            }
-                            
+                            }  
                         }
                     }
                     if (fita[k+1] == 0){
@@ -77,7 +80,7 @@ int main(){
     for (int i = 0 ; i < n ; i++){
     cout << fitas_coloridas[i];
         if (i < n-1){
-             cout << " ";
+            cout << " ";
         }
     }
     cout << endl;
