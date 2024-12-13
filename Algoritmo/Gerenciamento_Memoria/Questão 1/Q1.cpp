@@ -3,7 +3,7 @@
 
 int * increase_capacity(int * data, int &capacity, int &size){
     int* new_array = new int[capacity * 2];
-    for (int i=0 ; i<size ; ++i)
+    for (int i=0 ; i < size ; ++i)
         new_array[i] = data[i];
 
     int* old_array = data;
@@ -13,13 +13,13 @@ int * increase_capacity(int * data, int &capacity, int &size){
     return new_array;
 }
 int * push_back(int * data, int &capacity, int &size, int value){
-    if (size==capacity)
+    if (size == capacity)
         data = increase_capacity(data, capacity, size);
     data[size++]=value;
     return data;
 }
 int main(){
-    int *data, size=0, capacity=10, x;
+    int *data, size = 0 , capacity = 10, x;
     auto beg = std::chrono::high_resolution_clock::now();
     data = new int[capacity];
 

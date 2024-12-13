@@ -9,6 +9,7 @@ using namespace std;
 
 
 
+
 int tamanho_do_esforco(int lista[], int m){
     int tamanho = m;
     int qtd_subida = 0;

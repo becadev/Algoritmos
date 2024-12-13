@@ -1,5 +1,5 @@
 // Fita Colorida - F1PJ - OBI 2015
-// Complexidade:
+// Complexidade: O(n²)
 # include <iostream>
 # include <algorithm>
 using namespace std;
