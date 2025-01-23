@@ -7,13 +7,9 @@ bool labitinto_bt(int labirinto[20][20], int linha, int coluna, int l, int c){
 
     labirinto[l][c] = 9;
 
-    bool ans = labiritno_bt(labirinto)
+   // bool ans = labiritno_bt(labirinto)
 
 }
-
-
-
-
 
 int main(){
 
