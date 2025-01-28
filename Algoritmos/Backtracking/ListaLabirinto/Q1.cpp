@@ -2,7 +2,7 @@
 using namespace std;
 
 bool labirinto_bt(int labirinto[20][20], int linha , int coluna, int l, int c){
-    if(c == -1 || l == -1 || c == coluna || l == linha || labirinto[l][c] != 0)
+    if(c <= -1 || l <= -1 || c >= coluna || l >= linha || labirinto[l][c] != 0)
         return false;
     if(l == linha-1 && c== coluna-1) // posições válidas
         return true;

@@ -4,7 +4,7 @@ using namespace std;
 int labirinto_bt(int labirinto[20][20],
                 int linha, int coluna,
                 int l, int c) {
-if (l == -1 || c == -1 || l >= linha || c >= coluna || labirinto[l][c] != 0)
+if (l <= -1 || c <= -1 || l >= linha || c >= coluna || labirinto[l][c] != 0)
     return 0;
 
 if (l == linha - 1 and c == coluna - 1)
