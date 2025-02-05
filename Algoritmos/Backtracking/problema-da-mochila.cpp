@@ -1,19 +1,26 @@
 # include <iostream>
 # include <vector>
+# include <algorithm>
+# include <iomanip>
 using namespace std;
 
 struct item{
     int peso;
     double valor;
 };
-double mochila(vector<item> & itens, int q, int peso){
-    int ans = 0;
-    if(peso < 0) return 0;
-    if(peso == 0) return 1;
-    
-
-    return ans;
+// q = qtd de itens
+double mochila_r(vector<item> & itens, int q, int peso, double v){
+    if(peso < 0 || q < 0) return 0.00;
+    if(q == 0) return v;
+    double r1 = mochila_r(itens, q-1, peso - itens[q-1].peso, v + itens[q-1].valor);
+    double r2 = mochila_r(itens, q-1, peso, v);
+    return max({r1,r2});
 } // retorna qual o maior valor
+
+double mochila(vector<item> & itens, int q, int peso){
+    double valor = mochila_r(itens, q, peso, 0.00);
+    return valor;
+}
 
 int main(){
     int n, peso_maximo;
@@ -21,7 +28,8 @@ int main(){
     vector<item>itens(n);
     for(item & i : itens)
         cin >> i.peso >> i.valor;
-    double valor = mochila(itens, n-1, peso_maximo);
+    double valor = mochila(itens, n, peso_maximo);
+    cout << fixed << setprecision(2) << valor << endl;
     return 0;
 }
 
