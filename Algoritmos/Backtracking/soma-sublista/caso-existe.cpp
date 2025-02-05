@@ -21,6 +21,8 @@ int main(){
     int *a, n, s, i;
     cin >> n >> s;
     a = new int[n];
+    for(i = 0 ; i < n ; i++)
+        cin >> a[i];
     resposta ans = soma_sublista_bt(a,n,s);
     if(ans.existe){
         cout << "Existe sublista de soma " << s << endl;
@@ -29,6 +31,7 @@ int main(){
     }
     else    
         cout << "Não existe sublista de soma" << s << endl;
+        cout<<endl;
         delete [] a;
         return 0;
 }
