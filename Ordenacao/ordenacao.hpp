@@ -1,6 +1,6 @@
 #ifndef __ORDENACAO__
 #define __ORDENACAO__
-
+unsigned int i;
 /*
   Função que retorna se um vetor 'a' de 't' elementos 
   está ordenado não decrescentemente

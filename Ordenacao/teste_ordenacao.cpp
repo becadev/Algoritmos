@@ -7,7 +7,7 @@ const int INSERCAO = 2;
 const int MERGE = 3;
 
 void print_usage() {
-  std::cout << "Programa para ordenação de números ineiros.\n\n";
+  std::cout << "Programa para ordenação de números inteiros.\n\n";
   std::cout << "\tUso: teste_ordenacao [Opção]\n";
   std::cout << "\n";
   std::cout << "Onde 'Opção' é uma das opções a seguir:\n\n";
