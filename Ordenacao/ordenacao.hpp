@@ -1,6 +1,6 @@
 #ifndef __ORDENACAO__
 #define __ORDENACAO__
-unsigned int i;
+
 /*
   Função que retorna se um vetor 'a' de 't' elementos 
   está ordenado não decrescentemente
@@ -30,5 +30,5 @@ void insercao(int a[], unsigned int t);
   A ordenação é feita diretamente no vetor 'a'
 */
 void merge_sort(int a[], unsigned int t);
-
+void merge_sort_bt(int a[], unsigned int t, int primeiro, int ultimo);
 #endif
