@@ -14,31 +14,33 @@ bool ordenado(int a[],  unsigned int t){ // verificar se já não está ordenado
 /* Big(o) ==> O(n²)*/
 void selecao(int a[], unsigned int t){ 
     unsigned int i, j, min, aux;
-    for (i = 0; i < (t-1); i++){
-        min = i;
-        for (j = (i+1); j < t; j++) {
-            if(a[j] < a[min])
-                min = j;
-        }
-        if (a[i] != a[min]) {
-            aux = a[i];
-            a[i] = a[min];
-            a[min] = aux;
+    if(ordenado(a,t) == false){ // verificar se já não está ordenado   
+        for (i = 0; i < (t-1); i++){
+            min = i;
+            for (j = (i+1); j < t; j++) {
+                if(a[j] < a[min])
+                    min = j;
+            }
+            if (a[i] != a[min]) {
+                aux = a[i];
+                a[i] = a[min];
+                a[min] = aux;
+            }
         }
     }
 }
-/* Big(o) ==>  O(n²)*/
+    /* Big(o) ==>  O(n²)*/
 void insercao(int a[], unsigned int t){
-    int j, aux;
-    if(ordenado(a,t) == false){ // verificar se já não está ordenado    
-        for (unsigned int i = 1 ; i < t ; i++){
-            aux = a[i];
-            for(j = i-1; j >= 0 && a[j] > aux ; j--){
-                    a[j+1] = a[j];
+        int j, aux;
+        if(ordenado(a,t) == false){ // verificar se já não está ordenado    
+            for (unsigned int i = 1 ; i < t ; i++){
+                aux = a[i];
+                for(j = i-1; j >= 0 && a[j] > aux ; j--){
+                        a[j+1] = a[j];
+                }
+                a[j + 1] = aux;
             }
-            a[j + 1] = aux;
-        }
-    } 
+        } 
 }
 
 /* Big(o) ==> O(logn)*/

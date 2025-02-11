@@ -14,6 +14,7 @@ OBS: O padrão é ordenação por seleção.
 
 Para definir ordenação por inserção do arquivo 'e1.txt' e gerar o arquivo 's1.txt'.
   ./teste_ordenacao -i < e1.txt > s1.txt
+  ./teste_ordenacao -i < testes/caso01/exemplo-10000-1.txt >> s1.txt 2>&1
 
 Para definir ordenação por seleção do arquivo 'e1.txt' e gerar o arquivo 's1.txt'.
   ./teste_ordenacao -s < e1.txt > s1.txt
