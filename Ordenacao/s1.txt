@@ -103,3 +103,11 @@ Método inserção usado para ordenação.
 Método inserção usado para ordenação.
 100000 Tempo de ordenação: 1810857 microsegundo(s)
 
+
+
+Método inserção usado para ordenação.
+100000 Tempo de ordenação: 1930527 microsegundo(s)
+
+Método merge-sort usado para ordenação.
+100000 Tempo de ordenação: 13019 microsegundo(s)
+
