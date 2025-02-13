@@ -1,44 +1,33 @@
-// Desempenho O(n^2)
+// Começando do topo
 # include <iostream> 
 # include <algorithm>
 using namespace std;
+const int INF = 1000000;
 
-// acima, acima para esquerda e acima para direita
-// vai ter que somar a qtd de degrau dos caminhos que passou
-// possibilidades de caminhos: (n * m) * 3
-// como eu faria pra percorrer apenas os elementos da 0 até c (primeira linha da matriz)?
-// Antes que ele decida para qual caminho seguir, verificaria qual das possibilidades a é menor
-// como que faz para ele retornar o elemento do array ao invés de "1"?
-int labirinto_r(int labirinto[16][16], int linha , int coluna, int l, int c, int menor, int atual){
-    int caminhos[coluna], c1,c2,c3;
-    if(c <= -1 || l <= -1 || c >= coluna || l >= linha) // para não sair dos limites da matriz
-        return 0;
-    if(l == linha-1) // chegou ao topo
-        return labirinto[0][c];
-    if (atual <= menor)
-        menor = atual;
-    
-    c1 = labirinto_r(labirinto, linha, coluna, l+1, c, menor, atual);   // para cima
-    c2 = labirinto_r(labirinto, linha, coluna, l+1, c+1, menor, atual); // para cima a direita
-    c3 = labirinto_r(labirinto, linha, coluna, l+1, c-1,menor, atual);  // para cima a esquerda
-    
-    
+int menor_degrau(int escadaria[20][20], int l, int c, int topo, int laterais){
+    if(laterais <= c || topo <= l || 0 > c || 0 > l ) // para não sair dos limites da matriz
+        return INF;
+    if(l == topo-1) // chegou ao topo
+        return escadaria[l][c];
 
-    return menor;
+    int c1 = menor_degrau(escadaria, l+1, c, topo, laterais);   // para baixo
+    int c2 = menor_degrau(escadaria, l+1, c+1, topo, laterais); // para baixo a direita
+    int c3 = menor_degrau(escadaria, l+1, c-1, topo, laterais);  // para baixo a esquerda
+    
+    return (min({c1,c2,c3})) + escadaria[l][c];
 }
-
-int labirinto_(int labirinto[16][16], int linha , int coluna){
-    int x = labirinto_r(labirinto, linha , coluna, 0, 0,990, 1000);
-    return x;
-}
-
 
 int main(){
-    int n, m, labirinto[16][16];
+    int n, m, escadaria[20][20];
     cin >> n >> m;
     for(int i = 0 ; i < n ; i++)
         for(int j = 0 ; j < m ; j++)
-            cin >> labirinto[i][j];
-    cout << labirinto_(labirinto, n, m) << endl;
+            cin >> escadaria[i][j];
+    int ans = INF;
+    for(int i = 0 ; i <  m ; i++){
+        ans = min({ans, menor_degrau(escadaria, 0, i, n, m)});
+    }
+    cout << ans << endl;
     return 0;
 }
+
