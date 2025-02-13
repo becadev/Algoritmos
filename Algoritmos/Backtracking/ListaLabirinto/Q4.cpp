@@ -16,8 +16,6 @@ bool labirinto_bt(int labirinto[20][20], int f1, int f2, int linha , int coluna,
     return ans;
 }
 
-
-
 int main(){ // O(n²)
     int linha, coluna, inicio1, inicio2, fim1, fim2;
     cin >> linha >> coluna;
