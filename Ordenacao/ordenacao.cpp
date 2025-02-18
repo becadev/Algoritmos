@@ -10,7 +10,7 @@ bool ordenado(int a[],  unsigned int t){ // verificar se já não está ordenado
         }
     return ordenado;
 }
-/* Big(o) ==> O(n²)*/
+/* Big(o) ==> O(n!)*/
 void selecao(int a[], unsigned int t){ 
     unsigned int i, j, min, aux;
     if(ordenado(a,t) == false){ // verificar se já não está ordenado   
@@ -35,7 +35,7 @@ void insercao(int a[], unsigned int t){
             for (unsigned int i = 1 ; i < t ; i++){
                 aux = a[i];
                 for(j = i-1; j >= 0 && a[j] > aux ; j--){
-                        a[j+1] = a[j];
+                    a[j+1] = a[j];
                 }
                 a[j + 1] = aux;
             }
