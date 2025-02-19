@@ -5,16 +5,16 @@
 # include <bits/stdc++.h>
 # include <vector>
 using namespace std;
-int INF = 100000;
+const int INF = 100000;
 int dp[1000][1000]; // tabela de -1
 
-void auto_complete(){
-    for(int i = 0; i < 1000 ; i++){
-        for (int k = 0 ; k < 1000 ; k++){
-            dp[i][k] = -1;
-        }
-    }
-}
+// void auto_complete(){
+//     for(int i = 0; i < 1000 ; i++){
+//         for (int k = 0 ; k < 1000 ; k++){
+//             dp[i][k] = -1;
+//         }
+//     }
+// }
 
 int qtd_moedas(int a[20], int qtd, int troco){
     int q;
@@ -30,7 +30,7 @@ int qtd_moedas(int a[20], int qtd, int troco){
 
 
 int main(){
-    auto_complete();
+    // auto_complete();
     int qtd, troco, cont = 0, n;
     cin >> qtd >> troco;
     int a[20];

@@ -1,3 +1,4 @@
+// sem programação dinâmica
 # include <iostream>
 # include <vector>
 # include <algorithm>
@@ -12,9 +13,9 @@ struct item{
 double mochila_r(vector<item> & itens, int q, int peso, double v){
     if(peso < 0 || q < 0) return 0.00;
     if(q == 0) return v;
-    double r1 = mochila_r(itens, q-1, peso - itens[q-1].peso, v + itens[q-1].valor);
-    double r2 = mochila_r(itens, q-1, peso, v);
-    return max({r1,r2});
+    double r1 = mochila_r(itens, q-1, peso - itens[q-1].peso, v + itens[q-1].valor); // valor com item
+    double r2 = mochila_r(itens, q-1, peso, v); // valor sem o item
+    return max({r1,r2}); 
 } // retorna qual o maior valor
 
 double mochila(vector<item> & itens, int q, int peso){
