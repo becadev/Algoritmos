@@ -3,18 +3,10 @@
 // a particularidade dessa comparada a soma de sbublista, é que uma moeda pode ser utilizada mais de uma vez
 //  código frankenstein
 # include <bits/stdc++.h>
-# include <vector>
 using namespace std;
 const int INF = 100000;
-int dp[1000][1000]; // tabela de -1
+std::vector<std::vector<int>> dp;
 
-// void auto_complete(){
-//     for(int i = 0; i < 1000 ; i++){
-//         for (int k = 0 ; k < 1000 ; k++){
-//             dp[i][k] = -1;
-//         }
-//     }
-// }
 
 int qtd_moedas(int a[20], int qtd, int troco){
     int q;
@@ -34,15 +26,11 @@ int main(){
     int qtd, troco, cont = 0, n;
     cin >> qtd >> troco;
     int a[20];
-    
+    dp.resize(qtd+10,std::vector<int>(troco+10,-1));
     for(int i = 0 ; i < qtd ; i ++){
-        cin >> n;
-        if(n <= troco){ // só vai receber valores que sao menores que o troco
-            a[cont] = n;
-            cont++;
-        }
+        cin >> a[i];
     }
-    qtd_moedas(a, cont, troco);
+    qtd_moedas(a, qtd, troco);
     int menor;
     for(int i = troco-1 ; i >= 0 ; i--){
         cout << dp[troco-1][i] << " "; // os valores de dp não estão sendo salvos
@@ -56,7 +44,7 @@ int main(){
             menor = n;
         }
     }
-    // cout << menor << endl;
+    cout << menor << endl;
 
     return 0;
 }

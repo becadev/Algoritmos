@@ -2,17 +2,9 @@
 // Mochila binária
 #include <bits/stdc++.h>
 using namespace std;
- 
-double dp[10000][10000];
- 
-void auto_complete(){
-    for(int i = 0; i < 10000 ; i++){
-        for (int k = 0 ; k < 10000 ; k++){
-            dp[i][k] = -1;
-        }
-    }
-}
- 
+
+std::vector<std::vector<double>> dp;
+
 struct item{
     int peso;
     double valor;
@@ -34,9 +26,9 @@ double mochila_dp(vector<item> & itens, int next, int p){
 }
  
 int main(){
-    auto_complete();
     int n, p;
     cin >> n >> p;
+    dp.resize(n,vector<double>(p+10,-1)); //vetor de n*p  preenchida de -1
     vector<item>itens(n);
     for(item & i : itens)
         cin >> i.peso >> i.valor;
