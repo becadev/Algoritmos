@@ -63,7 +63,7 @@ int ginastica_pd(int t, int m, int n, int k){
     if(k  < m || k > n ) return 0; // estão fora dos critérios
     if(t == 1 ) return 1; // fim dos minutos
     if(dp[k][t] != -1) return dp[k][t]; // já foi calculado
-    int c1 = ginastica_pd(t-1, m, n, k+1) + ginastica_pd(t-1, m, n, k-1);
+    int c1 =( ginastica_pd(t-1, m, n, k+1) + ginastica_pd(t-1, m, n, k-1)) % 1000000007;
     return dp[k][t] = c1;
 }
 
@@ -73,7 +73,7 @@ int main(){
     dp.resize(n+1,std::vector<int>(t+1, -1));
     for(int i = m ; i <= n ; i++){ // vai do min ao max
         // qtd += ginastica_bt(t, m, n, i);
-        qtd += ginastica_pd(t, m, n, i);
+        qtd = (qtd + ginastica_pd(t, m, n, i)) % 1000000007;
     }
     cout << qtd << endl;
     return 0;
