@@ -6,12 +6,11 @@ using namespace std;
 
 int moedas_soma(int v, std::vector<int> & moedas, int index){
     if(v == 0) return 1;
-    // tem que verificar de alguma forma qunado o numero for maior, pq quando ele fez a chamada o loop começa do ultimo index, e como ta ordenada, ent nao sera uma soma crescente. se começar o loop em ordem decrescente?
     if(v < 0) return 0;
     int m1 = 0;
-    for(int i = index; i > 0 ; i--){
-        m1 =  m1 + moedas_soma(v - moedas[i], moedas, index);
-        cout << m1 << " " << i << endl;
+    for(int i = moedas.size()-1; i >= index ; i--){
+        m1 =  m1 + moedas_soma(v - moedas[i], moedas, i);
+        
     }
     return m1;
 }
@@ -26,11 +25,12 @@ int main(){
 
     int qtd_somas = 0;
     std::sort(moedas.begin(), moedas.end(), std::greater<int>());
-    for(int i = moedas.size() - 1; i >= 0 ; i--){
-        qtd_somas += moedas_soma(v, moedas, i);
-        break;
-    }
+    // for(int i = moedas.size() - 1; i >= 0 ; i--){
+    //     qtd_somas += moedas_soma(v, moedas, i);
+    //     break;
+    // }
 
-    cout << qtd_somas << endl;
+
+    cout << moedas_soma(v, moedas, 0) << endl;
     return 0;
 }
